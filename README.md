@@ -1,6 +1,6 @@
 # JavaScript 3
 
-what's this module all about?
+Hi there! Welcome to Javascript 3, get ready to have lot of fun 🥳
 
 ### Index
 * [learning objectives](#learning-objectives)
@@ -12,20 +12,27 @@ what's this module all about?
 
 > quick overview of each week, you can even copy-paste this from the top section of the weekly markdowns
 
-__Week 1__
+### Week 1
 
 
 
-__Week 2__
+### Week 2
 
 
 
-__Week 3__
-
-
+### Week 3
 
 
 [TOP](#javascript-3)
+
+## How to make homework
+  
+- Fork the [Javascript 3 repository](https://github.com/be-hacking-hyf/javascript-3-homework)
+- On __your__ fork you have now the fork with the `master` branch
+- Make a branch for each homework exercice
+- Work as you want on your branch (e.g. `exercice-1--filter-array`)
+- When you decide to submit your homework, make a `pull request` on __your__ master branch. Be careful to not make a PR on the original repository.
+- Add a tag to this PR with the correct week (e.g. `week 1`)
 
 ---
 
