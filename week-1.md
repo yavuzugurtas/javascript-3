@@ -4,25 +4,18 @@ some quick little intro to the week's big idea
 
 ### Index
 * [learning objectives](#learning-objectives)
-* [agenda for the day](#agenda)
 * [homework](#homework)
 * [resources](#resources)
+* [tools](#tools)
 
 ---
 
 ## Learning objectives
 
-> these should be performable skills, not concepts. (i didn't do this correctly in all of js-1)  
-> ie. making an api call with xmlhttprequest, refactor return statements to callbacks, refactor callbacks to promises, draw vanilla dom components in the callback to an api call, ...
-
-
-[TOP](#week-1)
-
----
-
-## Agenda
-
-> list here links to any slides, examples, resources, ... roughly in the order you plan to cover them in class
+At the end of this first week, you will be able to interact with an API and fetch some data from a server to your project.  
+  
+- Make API call using XMLHttpObject
+- Refactor using fetch
 
 [TOP](#week-1)
 
@@ -40,10 +33,23 @@ you can find this week's exercises & projects in the:
 
 ## Resources
 
-> specific resources that will help with this week's homework and project
+- [Chrome Network Devtools documentation](https://developers.google.com/web/tools/chrome-devtools/network/)
+- [XMLHttpRequest fundamental](https://github.com/HackYourFutureBelgium/fundamentals/blob/master/fundamentals/XMLHttpRequest.md)
+- [XMLHttpRequest documentation](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+- [XHR Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+- [XHR Status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 [TOP](#week-1)
 
+---
+
+## Tools
+
+Manage all of your organization's APIs in Postman, with the industry's most complete API development environment.
+
+> [Download Postman here](https://www.getpostman.com/downloads/)
+
+If you have some trouble, read the [doc](https://learning.getpostman.com/)
 ___
 ___
 ### <a href="https://hackyourfuture.be" target="_blank"><img src="https://pbs.twimg.com/profile_images/984474625009741824/Bs_qKx6-_400x400.jpg" width="100" height="100"></img></a>
