@@ -1,8 +1,8 @@
 # Week 1
 
-Hi there! Welcome to Javascript 3, get ready to have lot of fun 🥳
-Here we go for the first week. Let's start with learning how we can interact with an API.
-Of course we need to understand whatr is an API and why using it.
+Hi there! Welcome to Javascript 3, get ready to have lot of fun 🥳  
+Here we go for the first week. Let's start with learning how we can interact with an API.  
+Of course we need to understand whatr is an API and why using it.  
 
 ### Index
 * [learning objectives](#learning-objectives)
