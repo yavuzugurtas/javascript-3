@@ -25,9 +25,7 @@ At the end of this first week, you will be able to interact with an API and fetc
 
 ## Homework
 
-you can find this week's exercises & projects in the:
-* [js-3 exercises repo](https://github.com/be-hacking-hyf/javascript-3-exercises)
-* [js-3 projects repo](https://github.com/be-hacking-hyf/javascript-3-projects)
+you can find this week's homework [right here](https://github.com/be-hacking-hyf/javascript-3-homework/tree/master/week-1)
 
 [TOP](#week-1)
 
