@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Get a dog</title>
+  <style>
+  
+    .button {
+      background-color: brown;
+      color: white;
+      font-size: 22px;
+      padding: 10px;
+      margin: 50px 0;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <button class="button" id="getDogButton" >Get a dog</button>
+
+  <img 
+
+    id="image"
+
+    src="https://thenypost.files.wordpress.com/2018/10/102318-dogs-color-determine-disesases-life.jpg?quality=90&strip=all&w=618&h=410&crop=1" 
+
+  >
+
+  <script>
+
+    // Let's get a dog from: https://dog.ceo/dog-api/
+
+    // API endpoit URL = https://dog.ceo/api/breeds/image/random
+
+    function getDogFromApi() {
+      
+      const xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+
+          const response = xhr.responseText;
+          const response2 = xhr.response;
+
+          const objectResponse = JSON.parse(response);
+
+          const dogImage = objectResponse.message;
+
+          const imageElement = document.getElementById('image')
+
+          imageElement.src = dogImage;
+
+        }
+      }
+
+      const xhr_new = new XMLHttpRequest();
+
+
+      xhr.open('GET', 'https://dog.ceo/api/breeds/image/random');
+
+      xhr.send();
+
+    }
+
+    const btn = document.getElementById('getDogButton')
+
+    btn.addEventListener('click', getDogFromApi)
+
+
+  </script>
+
+</body>
+</html>
