@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>remove a child example (1)</title>
+  <meta name="description" content="remove a child example (1)">
+
+  <link href="../../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../../dependencies/mocha/mocha.js"></script>
+  <script src="../../dependencies/assert.js"></script>
+
+  <script src="../../dependencies/testTheDom.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <h2>remove a child example (1)</h2>
+  </header>
+
+  <section class='things-to-study'>
+    <div id='side to inspect' class='exercise-output'>
+
+      <div id='un-modified'>
+        <details>
+          <summary>a great tutorial on DOM manipulation:</summary>
+          <a href="https://www.badgerbadgerbadger.com" target='_blank'>Mr. Traversy does it again!</a>
+          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" target='_blank'>Mr. Traversy does it again!</a>
+        </details>
+      </div>
+      <br>
+      <div id='modified'>
+        <details>
+          <summary>a great tutorial on DOM manipulation:</summary>
+          <a href="https://www.badgerbadgerbadger.com" target='_blank'>Mr. Traversy does it again!</a>
+          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" target='_blank'>Mr. Traversy does it again!</a>
+        </details>
+      </div>
+      <br>
+      <div id='replicate-me'>
+        <details>
+          <summary>a great tutorial on DOM manipulation:</summary>
+          <a href="https://www.youtube.com/watch?v=0ik6X4DJKCc" target='_blank'>Mr. Traversy does it again!</a>
+        </details>
+      </div>
+      <br>
+      <script id='DOM manipulation script'>
+        const replicationDiv = document.getElementById('modified');
+        const detailsEl = replicationDiv.children[0];
+        const extraLink = detailsEl.children[1];
+
+        detailsEl.removeChild(extraLink);
+      </script>
+
+    </div>
+
+    <div id="mocha" class='mocha-output'></div>
+
+    <script id='run the tests!'>
+      mocha.setup({
+        ui: 'bdd',
+      })
+      compareElements.attributesToTest = [
+        "nodeName", 'innerText', 'href', 'target', 'children', 'childElementCount'
+      ];
+      compareElements(
+        document.getElementById('modified'),
+        document.getElementById('replicate-me')
+      );
+      mocha.run();
+    </script>
+
+  </section>
+
+
+
+</body>
+
+</html>

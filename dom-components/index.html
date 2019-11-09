@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>DOM Components</title>
+  <meta name="description" content="DOM Component Exercises">
+
+  <link href="../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../dependencies/mocha/mocha.js"></script>
+
+  <script src="../dependencies/assert.js"></script>
+
+  <script src="../dependencies/testTheDom.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body style="padding-left:10px;">
+
+
+  <header>
+    <h2>DOM component exercises</h2>
+  </header>
+
+  <section class='things-to-study'>
+
+    <div id='rendered-components' class='exercise-output'></div>
+
+    <div id="mocha" class='mocha-output'></div>
+
+  </section>
+
+
+  <script>
+    mocha.setup({
+      ui: 'bdd',
+      noHighlighting: true
+    })
+  </script>
+  <script src='./exercises/linked-button.js'></script>
+  <script src='./exercises/thumbnail.js'></script>
+  <script src='./exercises/linked-thumbnail.js'></script>
+  <script src='./exercises/study-links.js'></script>
+  <script>
+    mocha.run();
+  </script>
+
+
+
+</body>
+
+</html>

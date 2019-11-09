@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>update UL with a loop example</title>
+  <meta name="description" content="update UL with a loop example">
+
+  <link href="../../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../../dependencies/mocha/mocha.js"></script>
+  <script src="../../dependencies/assert.js"></script>
+
+  <script src="../../dependencies/testTheDom.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <h2>update UL with a loop example</h2>
+  </header>
+
+  <section class='things-to-study'>
+    <div id='side to inspect' class='exercise-output'>
+
+      <div id='un-modified'>
+        <h1>a list of things</h1>
+        <ul>
+          <li>pigs</li>
+          <li>chairs</li>
+          <li>a carpet</li>
+        </ul>
+      </div>
+      <br>
+
+      <div id='modified'>
+        <h1>a list of things</h1>
+        <ul>
+          <li>pigs</li>
+          <li>chairs</li>
+          <li>a carpet</li>
+        </ul>
+      </div>
+      <br>
+      <div id='replicate-me'>
+        <h1>a list of things</h1>
+        <ul>
+          <li>robots</li>
+          <li>solar systems</li>
+          <li>oil</li>
+        </ul>
+      </div>
+
+      <script id='DOM manipulation script'>
+        const replication = document.getElementById('modified');
+        const ulEl = replication.children[1];
+
+        const things = ['robots', 'solar systems', 'oil'];
+
+        for (let i = 0; i < things.length; i++) {
+          ulEl.children[i].innerText = things[i];
+        }
+      </script>
+
+    </div>
+
+    <div id="mocha" class='mocha-output'></div>
+
+    <script id='run the tests!'>
+      mocha.setup({
+        ui: 'bdd',
+      })
+      compareElements.attributesToTest = [
+        "nodeName", 'innerText', 'children', 'childElementCount'
+      ];
+      compareElements(
+        document.getElementById('modified'),
+        document.getElementById('replicate-me')
+      );
+      mocha.run();
+    </script>
+
+  </section>
+
+
+
+</body>
+
+</html>

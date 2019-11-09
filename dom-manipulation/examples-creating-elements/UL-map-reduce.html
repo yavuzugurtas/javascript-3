@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>map, reduce UL example</title>
+  <meta name="description" content="map, reduce UL example">
+
+  <link href="../../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../../dependencies/mocha/mocha.js"></script>
+  <script src="../../dependencies/assert.js"></script>
+
+  <script src="../../dependencies/testTheDom.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <h2>map, reduce UL example</h2>
+  </header>
+
+  <section class='things-to-study'>
+    <div id='side to inspect' class='exercise-output'>
+
+      <div id='un-modified'></div>
+
+      <div id='modified'></div>
+
+      <div id='replicate-me'>
+        <h1>a list of things</h1>
+        <ul>
+          <li>robots</li>
+          <li>solar systems</li>
+          <li>oil</li>
+        </ul>
+      </div>
+
+      <script id='DOM manipulation script'>
+        const h1El = document.createElement('h1');
+        h1El.innerText = 'a list of things';
+
+        const things = ['robots', 'solar systems', 'oil'];
+
+        const thingElements = things.map(thing => {
+          const newLi = document.createElement('li');
+          newLi.innerText = thing;
+          return newLi
+        });
+        console.log(thingElements);
+
+        const thingsListEl = thingElements.reduce((ulEl, thingEl) => {
+          ulEl.appendChild(thingEl);
+          return ulEl;
+        }, document.createElement('ul'));
+
+        const replication = document.getElementById('modified');
+        replication.appendChild(h1El);
+        replication.appendChild(thingsListEl);
+      </script>
+
+    </div>
+
+    <div id="mocha" class='mocha-output'></div>
+
+    <script id='run the tests!'>
+      mocha.setup({
+        ui: 'bdd',
+      })
+      compareElements.attributesToTest = [
+        "nodeName", 'innerText', 'children', 'childElementCount'
+      ];
+      compareElements(
+        document.getElementById('modified'),
+        document.getElementById('replicate-me')
+      );
+      mocha.run();
+    </script>
+
+  </section>
+
+
+
+</body>
+
+</html>

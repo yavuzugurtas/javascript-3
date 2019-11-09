@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>A example</title>
+  <meta name="description" content="A example">
+
+  <link href="../../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../../dependencies/mocha/mocha.js"></script>
+  <script src="../../dependencies/assert.js"></script>
+
+  <script src="../../dependencies/testTheDom.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../style.css">
+
+</head>
+
+<body>
+
+  <header>
+    <h2>A example</h2>
+  </header>
+
+  <section class='things-to-study'>
+    <div id='side to inspect' class='exercise-output'>
+
+      <div id='un-modified'></div>
+      <br>
+      <div id='modified'></div>
+      <br>
+      <div id='replicate-me'>
+        <a href='https://www.badgerbadgerbadger.com' target="_blank">learn about badgers</a>
+      </div>
+      <br>
+      <script id='DOM manipulation script'>
+        const aEl = document.createElement('a');
+        aEl.innerText = 'learn about badgers';
+        aEl.href = 'https://www.badgerbadgerbadger.com';
+        aEl.target = '_blank';
+
+        document.getElementById('modified')
+          .appendChild(aEl);
+      </script>
+
+    </div>
+
+    <div id="mocha" class='mocha-output'></div>
+
+    <script id='run the tests!'>
+      mocha.setup({
+        ui: 'bdd',
+      })
+      compareElements.attributesToTest = [
+        "nodeName", 'innerText', 'href', 'target', 'childElementCount', 'children',
+      ];
+      compareElements(
+        document.getElementById('modified'),
+        document.getElementById('replicate-me')
+      );
+      mocha.run();
+    </script>
+
+  </section>
+
+
+
+</body>
+
+</html>

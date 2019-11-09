@@ -1,41 +1,21 @@
-# JavaScript 3
+# JS 3
 
-what's this module all about?
+this module is a bit different (again) from the last.
 
-### Index
-* [learning objectives](#learning-objectives)
-* [general resources](#general-resources)
+## Week Projects
 
----
+The week projects are all aligned with video tutorials.  You'll have to follow along and complete the project taught in the tutorial like you did once in HTML/CSS.  BUT  working code does not a finished project make!  You'll need to follow the tutorials twice, and your final homework submission isn't just the working code but a complete repository with branches and everything (something [like this](https://github.com/HackYourFutureBelgium/built-with-branches/)).
 
-## Learning Objectives
+You'll need to have these branches:
+* first-watch: you will use this branch to follow along with the tutorial for the first time.
+* master: this branch will only contain working code, each commit will be the final code of each step branch
+* step-n: on your second pass through the tutorial you will need to build the project again from scratch practicing incremental development.  each step-n branch will be used to develop one step of the tutorial and will be merged into master before moving on to the next step
 
-> quick overview of each week, you can even copy-paste this from the top section of the weekly markdowns
-
-__Week 1__
-
-
-
-__Week 2__
+so this will take some planning, you can't just copy along with what the video is typing.  Before starting your second time through the tutorial you will need to do some planning:
+* where do the steps begin and end?
+* ...
 
 
+## Practice Problems
 
-__Week 3__
-
-
-
-
-[TOP](#javascript-3)
-
----
-
-
-# General Resources
-
-> link to less specific resources that will be useful over all 3 weeks.  these might includ good video tutorials, documentation, whatever
-
-[TOP](#javascript-3)
-
-___
-___
-### <a href="https://hackyourfuture.be" target="_blank"><img src="https://pbs.twimg.com/profile_images/984474625009741824/Bs_qKx6-_400x400.jpg" width="100" height="100"></img></a>
+The practice problems in this module are not required, but are highly recommended.  You can study them however you like, but each week's project will have a list of recommended practice problems.

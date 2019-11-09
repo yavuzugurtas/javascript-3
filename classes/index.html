@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>classes exercises</title>
+  <meta name="description" content="classes exercises">
+
+  <link href="../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../dependencies/mocha/mocha.js"></script>
+
+  <script src="../dependencies/assert.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+  <div id="mocha"></div>
+
+
+
+
+  <script>
+    mocha.setup({
+      ui: 'bdd',
+      noHighlighting: true
+    })
+  </script>
+  <script src='self-contained-2.js'></script>
+  <script src='self-contained.js'></script>
+  <script>
+    mocha.run();
+  </script>
+
+</body>
+
+</html>
