@@ -13,7 +13,7 @@ try {
 
   function passTheAsserts1() {
 
-    const requestURL = "https://hackyourfuture.be/practice-api/food/wet/soups.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/food/wet/soups.json";
 
     fetch(requestURL)
       .then(function parseResponse(resp) { return resp.json() })
@@ -35,7 +35,7 @@ try {
 
   function passTheAsserts2() {
 
-    const requestURL = "https://hackyourfuture.be/practice-api/food/dry/grains.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/food/dry/grains.json";
 
     fetch(requestURL)
       .then(function parseResponse(resp) { return resp.json() })
@@ -57,7 +57,7 @@ try {
 
   function passTheAsserts3() {
 
-    const requestURL = "https://hackyourfuture.be/practice-api/types.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/types.json";
 
     fetch(requestURL)
       .then(function parseResponse(resp) { return resp.json() })
@@ -84,7 +84,7 @@ try {
 
   function passTheAsserts4() {
 
-    const requestURL = "https://hackyourfuture.be/practice-api/types.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/types.json";
 
     fetch(requestURL)
       .then(function parseResponse(resp) { return resp.json() })

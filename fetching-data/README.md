@@ -4,7 +4,7 @@ This set of exercises is by no means a complete introduction to ```fetch``` or p
 JSON:
 * [javascript.info](https://javascript.info/json)
 * [JSON editor for practice](https://jsoneditoronline.org/)
-* [Browsers visualize it nicely](https://hackyourfuture.be/practice-api/types.json)
+* [Browsers visualize it nicely](https://hackyourfuturebelgiu.github.io/practice-api/types.json)
 * [writing JSON in VSC](https://code.visualstudio.com/Docs/languages/json)
 
 ```fetch```:
@@ -17,4 +17,4 @@ JSON:
 
 the "API" you'll be using in these exercises:
 * https://github.com/HackYourFutureBelgium/practice-api/
-* https://hackyourfuture.be/practice-api/
+* https://hackyourfuturebelgiu.github.io/practice-api/

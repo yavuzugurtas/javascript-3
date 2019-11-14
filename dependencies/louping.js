@@ -44,7 +44,7 @@ const louping = (() => {
     try {
       // more descriptive errors than new Function
       // eval(`(${asyncity} function ${func.name}(){ const console = consoleCatcher; ${funcBody} })();`);
-      eval(`(function ${func.name}(){ const console = consoleCatcher; try{ log.date = new Date(); ${funcBody}}catch(err){console.error(err)} })();`);
+      eval(`(${asyncity} function ${func.name}(){ const console = consoleCatcher; try{ log.date = new Date(); ${funcBody}}catch(err){console.error(err)} })();`);
     } catch (err) {
       log.err = err;
       container.firstChild.firstChild.firstChild.firstChild.style.color = 'red';
@@ -192,7 +192,10 @@ const louping = (() => {
   }
 
   louping.renderContainer = (func) => {
-    const header = louping.exerciseNameComponent(func.name, louping.generateLoupeURL(func));
+
+    const header = func.constructor.name === "AsyncFunction"
+      ? louping.exerciseNameComponent(func.name)
+      : louping.exerciseNameComponent(func.name, louping.generateLoupeURL(func));
 
     const summary = document.createElement('summary');
     summary.appendChild(header);
@@ -227,17 +230,21 @@ const louping = (() => {
     text.innerHTML = name + ' ';
     text.style.fontSize = '120%'
 
-    const loupeLink = document.createElement('a');
-    loupeLink.innerHTML = '(study in loupe)';
-    loupeLink.href = loupeURL;
-    loupeLink.target = '_blank';
 
 
     const div = document.createElement('div');
     div.appendChild(text);
     div.appendChild(louping.renderText('  '));
-    div.appendChild(loupeLink);
+
     div.style.display = 'inline';
+
+    if (loupeURL) {
+      const loupeLink = document.createElement('a');
+      loupeLink.innerHTML = '(study in loupe)';
+      loupeLink.href = loupeURL;
+      loupeLink.target = '_blank';
+      div.appendChild(loupeLink);
+    }
 
     return div;
   }

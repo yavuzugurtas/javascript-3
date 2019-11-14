@@ -10,7 +10,7 @@ try {
 
   function fetchGetsDataFromURLs() {
 
-    const requestURL = 'https://hackyourfuture.be/practice-api/types.json';
+    const requestURL = 'https://hackyourfuturebelgiu.github.io/practice-api/types.json';
 
     fetch(requestURL)
       .then(function then_1(response) {
@@ -37,7 +37,7 @@ try {
 
 
   function invalidURLs() {
-    const requestURL = "https://hackyourfuture.be/practice-api/type.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/type.json";
 
     fetch(requestURL)
       .then(function then_1(response) {
@@ -55,7 +55,7 @@ try {
 
 
   function errorHandling() {
-    const requestURL = "https://hackyourfuture.be/practice-api/file-that-does-not-exist.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/file-that-does-not-exist.json";
 
     fetch(requestURL)
       .then(function then_1(response) {
@@ -82,7 +82,7 @@ try {
 
 
   function fetchUsesTheEventLoop() {
-    const requestURL = "https://hackyourfuture.be/practice-api/animals/worms.json";
+    const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/animals/worms.json";
 
     console.log('written before fetch');
 

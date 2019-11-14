@@ -508,7 +508,7 @@ const evaluate = (() => {
   }
 
   evaluate.renderConsoleOutput = (func, isNative, args) => {
-    console.groupCollapsed(" console output:");
+    console.groupCollapsed(" expand for console output:");
     {
       if (func === evaluate) {
         console.log('ô¿ô');
