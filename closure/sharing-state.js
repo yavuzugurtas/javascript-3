@@ -36,219 +36,219 @@
 
 */
 
-{
-  const pageTitle = 'sharing state';
-  const header = document.createElement("h2");
-  header.innerHTML = pageTitle;
-  document.body.appendChild(header);
-  console.groupCollapsed('%c' + pageTitle, 'font-weight:bold');
+const sharingState = [];
+
+
+function pureFunctions() {
+  // closeIt creates pure closures
+  // because the returned functions never modify the closed variable
+  // calling the closed functions with the same args always returns the same result
+
+
+  function concatPigs(str) {
+    return str + " pigs";
+  }
+  function concatParam(str, param) {
+    return str + param;
+  }
+
+  const str1 = '-';
+
+  console.assert(concatPigs(str1) === null, 'assert 1');
+  console.assert(concatPigs(str1) === null, 'assert 2');
+  console.assert(concatParam(str1, " rock!") === null, 'assert 3');
+  console.assert(concatParam(str1, " rock!") === null, 'assert 4');
+
+
+  const str2 = "hoy";
+
+  console.assert(concatPigs(str2) === null, 'assert 5');
+  console.assert(concatPigs(str2) === null, 'assert 6');
+  console.assert(concatParam(str2, " cheese!") === null, 'assert 7');
+  console.assert(concatParam(str2, " cheese!") === null, 'assert 8');
 }
-try {
+pureFunctions.display = true;
+sharingState.push(pureFunctions);
 
 
-  function pureFunctions() {
-    // closeIt creates pure closures
-    // because the returned functions never modify the closed variable
-    // calling the closed functions with the same args always returns the same result
+function nonMutatingClosure() {
+  // closeIt creates pure closures
+  // because the returned functions never modify the closed variable
+  // calling the closed functions with the same args always returns the same result
 
-
-    function concatPigs(str) {
-      return str + " pigs";
-    }
-    function concatParam(str, param) {
-      return str + param;
-    }
-
-    const str1 = '-';
-
-    console.assert(concatPigs(str1) === null, 'assert 1');
-    console.assert(concatPigs(str1) === null, 'assert 2');
-    console.assert(concatParam(str1, " rock!") === null, 'assert 3');
-    console.assert(concatParam(str1, " rock!") === null, 'assert 4');
-
-
-    const str2 = "hoy";
-
-    console.assert(concatPigs(str2) === null, 'assert 5');
-    console.assert(concatPigs(str2) === null, 'assert 6');
-    console.assert(concatParam(str2, " cheese!") === null, 'assert 7');
-    console.assert(concatParam(str2, " cheese!") === null, 'assert 8');
+  function closeNonMutatingFunctions(str) {
+    return [
+      function () {
+        return str + " pigs";
+      },
+      function (param) {
+        return str + param;
+      }
+    ]
   }
-  pureFunctions.display = true;
-  evaluate(pureFunctions);
+
+  let closedFunctions1 = closeNonMutatingFunctions("-");
+  const concatPigs1 = closedFunctions1[0], concatParam1 = closedFunctions1[1];
+  closedFunctions1 = null;
+
+  console.assert(concatPigs1() === null, 'assert 1');
+  console.assert(concatPigs1() === null, 'assert 2');
+  console.assert(concatParam1(" rock!") === null, 'assert 3');
+  console.assert(concatParam1(" rock!") === null, 'assert 4');
 
 
-  function nonMutatingClosure() {
-    // closeIt creates pure closures
-    // because the returned functions never modify the closed variable
-    // calling the closed functions with the same args always returns the same result
+  let closedFunctions2 = closeNonMutatingFunctions("hoy");
+  const concatPigs2 = closedFunctions2[0], concatParam2 = closedFunctions2[1];
+  closedFunctions2 = null;
 
-    function closeNonMutatingFunctions(str) {
-      return [
-        function () {
-          return str + " pigs";
-        },
-        function (param) {
-          return str + param;
-        }
-      ]
-    }
-
-    let closedFunctions1 = closeNonMutatingFunctions("-");
-    const concatPigs1 = closedFunctions1[0], concatParam1 = closedFunctions1[1];
-    closedFunctions1 = null;
-
-    console.assert(concatPigs1() === null, 'assert 1');
-    console.assert(concatPigs1() === null, 'assert 2');
-    console.assert(concatParam1(" rock!") === null, 'assert 3');
-    console.assert(concatParam1(" rock!") === null, 'assert 4');
-
-
-    let closedFunctions2 = closeNonMutatingFunctions("hoy");
-    const concatPigs2 = closedFunctions2[0], concatParam2 = closedFunctions2[1];
-    closedFunctions2 = null;
-
-    console.assert(concatPigs2() === null, 'assert 5');
-    console.assert(concatPigs2() === null, 'assert 6');
-    console.assert(concatParam2(" cheese!") === null, 'assert 7');
-    console.assert(concatParam2(" cheese!") === null, 'assert 8');
-  }
-  nonMutatingClosure.display = true;
-  evaluate(nonMutatingClosure);
-
-
-  function mutatingClosure() {
-    // closeIt creates impure closures
-    // because the returned functions DO modify the closed variable
-    // calling the closed functions with the same args will not always return the same result
-
-    function closeMutatingFunctions(str) {
-      return [
-        function () {
-          return str += " pigs";
-        },
-        function (param) {
-          return str += param;
-        }
-      ]
-    }
-
-    let closedFunctions1 = closeMutatingFunctions("-");
-    const concatPigs1 = closedFunctions1[0], concatParam1 = closedFunctions1[1];
-    closedFunctions1 = null;
-
-    console.assert(concatPigs1() === null, 'assert 1');
-    console.assert(concatPigs1() === null, 'assert 2');
-    console.assert(concatParam1(" rock!") === null, 'assert 3');
-    console.assert(concatParam1(" rock!") === null, 'assert 4');
-
-
-    let closedFunctions2 = closeMutatingFunctions("hoy");
-    const concatPigs2 = closedFunctions2[0], concatParam2 = closedFunctions2[1];
-    closedFunctions2 = null;
-
-    console.assert(concatPigs2() === null, 'assert 5');
-    console.assert(concatPigs2() === null, 'assert 6');
-    console.assert(concatParam2(" cheese!") === null, 'assert 7');
-    console.assert(concatParam2(" cheese!") === null, 'assert 8');
-  }
-  mutatingClosure.display = true;
-  evaluate(mutatingClosure);
-
-
-  function exercise1() {
-    const str0 = "";
-
-    function concatPigs(str) {
-      return str + " pigs";
-    }
-    function concatParam(str, param) {
-      return str + " " + param;
-    }
-
-    const str1 = concatPigs(str0);
-
-    const str2 = concatParam(str1, " rock!");
-
-    const str3 = concatPigs(str2);
-
-    const str4 = concatParam(str2, str3);
-
-    console.assert(str4 === null, 'assert str4');
-  }
-  exercise1.display = true;
-  evaluate(exercise1);
-
-
-  function exercise2() {
-
-    function closeIt(str) {
-      return [
-        function () {
-          return str + " pigs";
-        },
-        function (param) {
-          return str + param;
-        }
-      ]
-    }
-
-    let closedFunctions = closeIt("-");
-    const concatPigs = closedFunctions[0], concatParam = closedFunctions[1];
-    closedFunctions = null;
-
-    const str1 = concatPigs();
-
-    const str2 = concatParam(" rock!");
-
-    const str3 = concatPigs();
-
-    const str4 = concatParam(str3);
-
-    console.assert(str4 === null, 'assert str4');
-  }
-  exercise2.display = true;
-  evaluate(exercise2);
-
-
-  function exercise3() {
-
-    function closeIt(str) {
-      return [
-        function () {
-          return str += " pigs";
-        },
-        function (param) {
-          return str += param;
-        }
-      ]
-    }
-
-    let closedFunctions = closeIt("-");
-    const concatPigs = closedFunctions[0], concatParam = closedFunctions[1];
-    closedFunctions = null;
-
-    const str1 = concatPigs();
-
-    const str2 = concatParam(" rock!");
-
-    const str3 = concatPigs();
-
-    const str4 = concatParam(str3);
-
-    console.assert(str4 === null, 'assert str4');
-  }
-  exercise3.display = true;
-  evaluate(exercise3);
-
-
-} catch (err) {
-  console.log(err);
-  document.body.appendChild(
-    evaluate.errorSearchComponent('.js file', err)
-  );
+  console.assert(concatPigs2() === null, 'assert 5');
+  console.assert(concatPigs2() === null, 'assert 6');
+  console.assert(concatParam2(" cheese!") === null, 'assert 7');
+  console.assert(concatParam2(" cheese!") === null, 'assert 8');
 }
-{
-  document.body.appendChild(document.createElement('hr'));
-  console.groupEnd();
+nonMutatingClosure.display = true;
+sharingState.push(nonMutatingClosure);
+
+
+function mutatingClosure() {
+  // closeIt creates impure closures
+  // because the returned functions DO modify the closed variable
+  // calling the closed functions with the same args will not always return the same result
+
+  function closeMutatingFunctions(str) {
+    return [
+      function () {
+        return str += " pigs";
+      },
+      function (param) {
+        return str += param;
+      }
+    ]
+  }
+
+  let closedFunctions1 = closeMutatingFunctions("-");
+  const concatPigs1 = closedFunctions1[0], concatParam1 = closedFunctions1[1];
+  closedFunctions1 = null;
+
+  console.assert(concatPigs1() === null, 'assert 1');
+  console.assert(concatPigs1() === null, 'assert 2');
+  console.assert(concatParam1(" rock!") === null, 'assert 3');
+  console.assert(concatParam1(" rock!") === null, 'assert 4');
+
+
+  let closedFunctions2 = closeMutatingFunctions("hoy");
+  const concatPigs2 = closedFunctions2[0], concatParam2 = closedFunctions2[1];
+  closedFunctions2 = null;
+
+  console.assert(concatPigs2() === null, 'assert 5');
+  console.assert(concatPigs2() === null, 'assert 6');
+  console.assert(concatParam2(" cheese!") === null, 'assert 7');
+  console.assert(concatParam2(" cheese!") === null, 'assert 8');
 }
+mutatingClosure.display = true;
+sharingState.push(mutatingClosure);
+
+
+function exercise1() {
+  const str0 = "";
+
+  function concatPigs(str) {
+    return str + " pigs";
+  }
+  function concatParam(str, param) {
+    return str + " " + param;
+  }
+
+  const str1 = concatPigs(str0);
+
+  const str2 = concatParam(str1, " rock!");
+
+  const str3 = concatPigs(str2);
+
+  const str4 = concatParam(str2, str3);
+
+  console.assert(str4 === null, 'assert str4');
+}
+exercise1.display = true;
+sharingState.push(exercise1);
+
+
+function exercise2() {
+
+  function closeIt(str) {
+    return [
+      function () {
+        return str + " pigs";
+      },
+      function (param) {
+        return str + param;
+      }
+    ]
+  }
+
+  let closedFunctions = closeIt("-");
+  const concatPigs = closedFunctions[0], concatParam = closedFunctions[1];
+  closedFunctions = null;
+
+  const str1 = concatPigs();
+
+  const str2 = concatParam(" rock!");
+
+  const str3 = concatPigs();
+
+  const str4 = concatParam(str3);
+
+  console.assert(str4 === null, 'assert str4');
+}
+exercise2.display = true;
+sharingState.push(exercise2);
+
+
+function exercise3() {
+
+  function closeIt(str) {
+    return [
+      function () {
+        return str += " pigs";
+      },
+      function (param) {
+        return str += param;
+      }
+    ]
+  }
+
+  let closedFunctions = closeIt("-");
+  const concatPigs = closedFunctions[0], concatParam = closedFunctions[1];
+  closedFunctions = null;
+
+  const str1 = concatPigs();
+
+  const str2 = concatParam(" rock!");
+
+  const str3 = concatPigs();
+
+  const str4 = concatParam(str3);
+
+  console.assert(str4 === null, 'assert str4');
+}
+exercise3.display = true;
+sharingState.push(exercise3);
+
+console.groupCollapsed('Sharing State')
+const evaluatedSharingState = sharingState
+  .map(f => evaluate(f))
+  .map(report => {
+    report.status = report.status === 0
+      ? 'error'
+      : report.status === 1
+        ? 'no status'
+        : report.status === 2
+          ? 'pass'
+          : report.status === 3
+            ? 'fail'
+            : 'invalid';
+    return report
+  });
+console.groupEnd();
+const liveStudiedSharingState = liveStudy(evaluatedSharingState, 'Sharing State');
+document.body.appendChild(liveStudiedSharingState.container);

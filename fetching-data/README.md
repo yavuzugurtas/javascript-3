@@ -1,3 +1,5 @@
+> You will want to study these exercises with [liveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
 This set of exercises is by no means a complete introduction to ```fetch``` or promises. The main objective of these exercises is to understand what an API is and how ```fetch``` can be used to retrieve and manipulate JSON data from an API.  These exercises also won't cover how to get data from inside a ```fetch``` call into your application.  To get an idea of these concepts we recommend checking out these resources below:
 
 

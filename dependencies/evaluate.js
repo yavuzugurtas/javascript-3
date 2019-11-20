@@ -29,9 +29,7 @@ const evaluate = (() => {
 
     evaluate.renderEvaluation(func, evaluationLog, isBehavior);
 
-    document && document.body !== null
-      ? evaluate.renderStudyLinks(func, evaluationLog)
-      : null
+    evaluationLog.view = evaluate.renderStudyLinks(func, evaluationLog);
 
     return evaluationLog;
   }
@@ -538,10 +536,10 @@ const evaluate = (() => {
     const container = document.createElement('section');
     container.id = func.name;
 
-    container.appendChild(
-      func.display
-        ? evaluate.renderSource(a, func, log)
-        : a
+    container.appendChild( // default to rendering source
+      func.display === false
+        ? a
+        : evaluate.renderSource(a, func, log)
     );
 
     if (log.isBehavior && log.testLogs) {
@@ -560,8 +558,10 @@ const evaluate = (() => {
       }
     }
 
-    document.body.appendChild(container);
-    document.body.appendChild(document.createElement("hr"));
+    container.appendChild(document.createElement('hr'));
+    return container;
+    // document.body.appendChild(container);
+    // document.body.appendChild(document.createElement("hr"));
   }
 
   evaluate.renderSource = (aEl, func, log) => {
