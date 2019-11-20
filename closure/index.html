@@ -19,6 +19,20 @@
 
   <h1>Closure</h1>
 
+  <a id='source-link' target='_blank'>
+    <button>
+      Review Source on GitHub
+    </button>
+  </a>
+  <script>
+    document.getElementById('source-link').href = (() => {
+      const userName = window.location.href.split('/')[2].split('.')[0];
+      const repoName = window.location.href.split('/')[3];
+      const directory = window.location.href.split('/')[4];
+      return 'https://github.com/' + userName + '/' + repoName + '/tree/master/' + directory;
+    })();
+  </script>
+
   <ul>
     <li>
       <a href='https://www.youtube.com/watch?v=CQqwU2Ixu-U' target='_blank'>Fun Fun Function: intro</a>
