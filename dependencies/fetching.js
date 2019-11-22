@@ -80,7 +80,13 @@ const fetching = (() => {
 
       const { domLabel, consoleLabel } = fetching.renderLabels(log);
 
-
+      // invalid logs should never make it this far through louping
+      if (log.status === 'error') {
+      } else if (assertion.pass === false) {
+        log.status = 'fail'
+      } else {
+        log.status = 'pass';
+      }
 
       console.assert(
         assertion.assertion,

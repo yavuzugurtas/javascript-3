@@ -6,7 +6,7 @@ const debugThese = [];
 
 function debugMe1() {
 
-  const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/food/dry/granes.json";
+  const requestURL = "https://hackyourfuture.be/practice-api/food/dry/granes.json";
 
   fetch(requestURL)
     .then(function parseResponse(resp) { return resp.json() })
@@ -27,7 +27,7 @@ debugThese.push(debugMe1);
 
 function debugMe2() {
 
-  const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/food/wet/soups.json";
+  const requestURL = "https://hackyourfutur.be/pactice-api/food/wet/soups.json";
 
   fetch(requestURL)
     .then(function parseResponse(resp) { return JSON.parse(resp) })
@@ -50,7 +50,7 @@ debugThese.push(debugMe2);
 
 function debugMe3() {
 
-  const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/animals/worms.json";
+  const requestURL = "https://hackyourfuture.be/practice-api/animals/worms.json";
 
   fetch(requestURL)
     .then(function parseResponse(resp) { resp.json() })
@@ -72,7 +72,7 @@ debugThese.push(debugMe3);
 
 function debugMe4() {
 
-  const requestURL = "https://hackyourfuturebelgiu.github.io/practice-api/animals/fungi.js";
+  const requestURL = "https://hakyourfuture.be/practice-api/aminals/fungi.js";
 
   fetch(requesURL)
     .then(function parseResponse(resp) { return resp.json() })

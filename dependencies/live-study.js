@@ -40,7 +40,9 @@ const liveStudy = (preReports, name) => {
   const observeReport = exercise => {
     let status = exercise.hasOwnProperty('status')
       ? exercise.status
-      : 'no status';
+      : exercise.hasOwnProperty('err')
+        ? 'error'
+        : 'no status';
     Object.defineProperty(
       exercise,
       'status',
@@ -173,7 +175,7 @@ const liveStudy = (preReports, name) => {
     div.id = 'search-and-sort';
     div.appendChild((() => {
       const inOrder = document.createElement('button');
-      inOrder.innerHTML = 'view all in order';
+      inOrder.innerHTML = 'view in order';
       inOrder.onclick = () => {
         exercisesContainer.innerHTML = '';
         exercisesContainer.appendChild(renderReports(exercises));
@@ -183,7 +185,7 @@ const liveStudy = (preReports, name) => {
     })());
     div.appendChild((() => {
       const sorted = document.createElement('button');
-      sorted.innerHTML = 'view all sorted';
+      sorted.innerHTML = 'view sorted';
       sorted.onclick = () => {
         exercisesContainer.innerHTML = '';
         exercisesContainer.appendChild(renderSortedReports(exercises));
@@ -193,7 +195,7 @@ const liveStudy = (preReports, name) => {
     })());
     div.appendChild((() => {
       const searchButt = document.createElement('button');
-      searchButt.innerHTML = 'search all exercises';
+      searchButt.innerHTML = 'search exercises';
 
       const renderSearchResults = () => {
         exercisesContainer.innerHTML = '';

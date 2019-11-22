@@ -1,3 +1,9 @@
+## The Event Loop
+
+So far all of the code you have written (except for the DOM code from last week) is _synchronous_.  This means that the next line of code cannot be executed until the previous has finished.  To be more technical, this means that all of your code has been executed on the _call stack_.  This is a fancy sounding term for something that's really not so difficult to understand if you try to visualize it instead of explain it.  And that's exactly what JS Tutor has been doing!  Each time you call a function in JS tutor, a new frame is opened.  That's it, that's the call stack!
+
+But the JS engine is more complex than just what you can see in JS Tutor.  JS Tutor only visualizes code that executes on the call stack, [Loupe](http://latentflip.com/loupe/) is a website that visualizes what happens in the Event Loop.  Everything you have written and studied so far takes place in the left column of the Loupe visualization: the Call Stack.  This set of exercises is designed to help you understand how the Call Stack and the Event Loop interact by sending code out to the Event Loop with ```setTimeout``` and encouraging you to go deeper into your exercises, studying your solutions in Loupe to build a strong visual understanding of what the Event Loop is and how it works.
+
 Loupe is an outstanding tool to understand the event loop, but it's not perfect.
 
 There are 6 things to be aware of when studying on this site:
@@ -38,4 +44,5 @@ A workflow might look like:
 > If you are running many exercises at once, you may see that some setTimeouts take longer than their delay
 > This is because the browser is very busy evaluating all the other exercises so sometimes can't get to everything on time
 > Keep this in mind in case you're ever making a project that requires precise timing
+
 
