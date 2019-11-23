@@ -25,7 +25,7 @@ There are two general paths you can take to get this finished repo, neither is b
 ## Supporting Resources
 
 ### Related Exercises
-* [Event Loop](./event-looop) then [Fetching Data](./fetching-data)
+* [Event Loop](./event-loop) then [Fetching Data](./fetching-data)
 * [Closure](./closure)
 
 ### Async & API Resources
