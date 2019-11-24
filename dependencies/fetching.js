@@ -27,12 +27,13 @@ const fetching = (() => {
 
     const container = fetching.renderContainer(func);
     const log = fetching.evaluate(func, container);
+    log.view = container;
 
     if (log.url) {
       container.firstChild.firstChild.appendChild(fetching.renderUrlLink(log.url));
     }
 
-    document.body.appendChild(log.container);
+    // document.body.appendChild(log.container);
 
     // log will gradually fill with asserts over time
     return log;
@@ -79,6 +80,14 @@ const fetching = (() => {
 
       const { domLabel, consoleLabel } = fetching.renderLabels(log);
 
+      // invalid logs should never make it this far through louping
+      if (log.status === 'error') {
+      } else if (assertion.pass === false) {
+        log.status = 'fail'
+      } else {
+        log.status = 'pass';
+      }
+
       console.assert(
         assertion.assertion,
         consoleLabel,
@@ -119,6 +128,8 @@ const fetching = (() => {
       log.err = true;
 
       const { domLabel, consoleLabel } = fetching.renderLabels(log);
+
+      log.status = 'error';
 
       console.error(
         consoleLabel,

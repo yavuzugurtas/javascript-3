@@ -22,107 +22,91 @@
     all you need to do is paste in the correct URL and the asserts will pass
 */
 
-{
-  const pageTitle = 'find the URLs';
-  const header = document.createElement("h2");
-  header.innerHTML = pageTitle;
-  document.body.appendChild(header);
+const findTheURLs = [];
+
+function findTheURL1() {
+  const requestURL = null;
+
+  fetch(requestURL)
+    .then(function parseResponse(resp) { return resp.json() })
+    .then(function workWithData(data) {
+      return data.string;
+    })
+    .then(function assertResult(result) {
+      console.assert(result === "Hello World", 'Hello World');
+    })
+    .catch(function handleErrors(err) {
+      console.error(err)
+    });
+
+  return requestURL;
 }
-
-try {
-
-  function findTheURL1() {
-    const requestURL = null;
-
-    fetch(requestURL)
-      .then(function parseResponse(resp) { return resp.json() })
-      .then(function workWithData(data) {
-        return data.string;
-      })
-      .then(function assertResult(result) {
-        console.assert(result === "Hello World", 'Hello World');
-      })
-      .catch(function handleErrors(err) {
-        console.error(err)
-      });
-
-    return requestURL;
-  }
-  fetching(findTheURL1);
+findTheURLs.push(findTheURL1);
 
 
-  function findTheURL2() {
-    const requestURL = null;
+function findTheURL2() {
+  const requestURL = null;
 
-    fetch(requestURL)
-      .then(function parseResponse(resp) { return resp.json() })
-      .then(function workWithData(data) {
-        const dataKeys = Object.keys(data);
-        return dataKeys.filter(key => data[key] === null);
-      })
-      .then(function assertResult(result) {
-        console.assert(JSON.stringify(result) === '["wood","pillow"]', 'these things are not edible');
-      })
-      .catch(function handleErrors(err) {
-        console.error(err)
-      });
+  fetch(requestURL)
+    .then(function parseResponse(resp) { return resp.json() })
+    .then(function workWithData(data) {
+      const dataKeys = Object.keys(data);
+      return dataKeys.filter(key => data[key] === null);
+    })
+    .then(function assertResult(result) {
+      console.assert(JSON.stringify(result) === '["wood","pillow"]', 'these things are not edible');
+    })
+    .catch(function handleErrors(err) {
+      console.error(err)
+    });
 
-    return requestURL;
-  }
-  fetching(findTheURL2);
-
-
-  function findTheURL3() {
-    const requestURL = null;
-
-    fetch(requestURL)
-      .then(function parseResponse(resp) { return resp.json() })
-      .then(function workWithData(data) {
-        return data.varieties[1];
-      })
-      .then(function assertResult(result) {
-        console.assert(result === atob("YnJhemls"), 'this one is also a country');
-      })
-      .catch(function handleErrors(err) {
-        console.error(err)
-      });
-
-    return requestURL;
-  }
-  fetching(findTheURL3);
-
-
-
-  function findTheURL4() {
-    const requestURL = null;
-
-    fetch(requestURL)
-      .then(function parseResponse(resp) { return resp.json() })
-      .then(function workWithData(data) {
-        const dataKeys = Object.keys(data);
-        return dataKeys.filter(key => data[key].indexOf('siberia') !== -1);
-      })
-      .then(function assertResult(result) {
-        console.assert(JSON.stringify(result) === '["striped","wavy"]', 'residents of siberia');
-      })
-      .catch(function handleErrors(err) {
-        console.error(err)
-      });
-
-    return requestURL;
-  }
-  fetching(findTheURL4);
-
-
-
-
-} catch (err) {
-  console.log(err);
-  document.body.appendChild(
-    fetching.errorSearchComponent(err)
-  );
+  return requestURL;
 }
+findTheURLs.push(findTheURL2);
 
-{
-  document.body.appendChild(document.createElement('hr'));
+
+function findTheURL3() {
+  const requestURL = null;
+
+  fetch(requestURL)
+    .then(function parseResponse(resp) { return resp.json() })
+    .then(function workWithData(data) {
+      return data.varieties[1];
+    })
+    .then(function assertResult(result) {
+      console.assert(result === atob("YnJhemls"), 'this one is also a country');
+    })
+    .catch(function handleErrors(err) {
+      console.error(err)
+    });
+
+  return requestURL;
 }
+findTheURLs.push(findTheURL3);
+
+
+function findTheURL4() {
+  const requestURL = null;
+
+  fetch(requestURL)
+    .then(function parseResponse(resp) { return resp.json() })
+    .then(function workWithData(data) {
+      const dataKeys = Object.keys(data);
+      return dataKeys.filter(key => data[key].indexOf('siberia') !== -1);
+    })
+    .then(function assertResult(result) {
+      console.assert(JSON.stringify(result) === '["striped","wavy"]', 'residents of siberia');
+    })
+    .catch(function handleErrors(err) {
+      console.error(err)
+    });
+
+  return requestURL;
+}
+findTheURLs.push(findTheURL4);
+
+
+
+const fetchingFindTheURLs = findTheURLs.map(fetching);
+const liveStudiedFindTheURLs = liveStudy(fetchingFindTheURLs, 'Find The URLs');
+document.body.appendChild(liveStudiedFindTheURLs.container);

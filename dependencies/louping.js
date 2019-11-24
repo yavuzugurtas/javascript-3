@@ -27,17 +27,14 @@ const louping = (() => {
     }
 
     const container = louping.renderContainer(func);
-    const log = louping.evaluate(func, container);
+    const log = { view: container }
+    return louping.evaluate(func, log);
 
-    document.body.appendChild(log.container);
-
-    // log will gradually fill with asserts over time
-    return log;
   }
 
-  louping.evaluate = (func, container) => {
-    const log = { name: func.name, func, consoleCalls: [], container };
-    const consoleCatcher = louping.consoleWrapper(container, log);
+  louping.evaluate = (func, log) => {
+    Object.assign(log, { name: func.name, func, consoleCalls: [], status: 'no status' });
+    const consoleCatcher = louping.consoleWrapper(log);
     const funcBody = louping.funcBody(func);
     const asyncity = func.constructor.name === "AsyncFunction"
       ? "async" : '';
@@ -47,10 +44,10 @@ const louping = (() => {
       eval(`(${asyncity} function ${func.name}(){ const console = consoleCatcher; try{ log.date = new Date(); ${funcBody}}catch(err){console.error(err)} })();`);
     } catch (err) {
       log.err = err;
-      container.firstChild.firstChild.firstChild.firstChild.style.color = 'red';
+      log.view.firstChild.firstChild.firstChild.firstChild.style.color = 'red';
       // make this more clear, use StackTrace ?
       console.log(err);
-      container.childNodes[1].appendChild(louping.errorSearchComponent(err));
+      log.view.childNodes[1].appendChild(louping.errorSearchComponent(err));
       return log;
     }
     return log;
@@ -65,7 +62,7 @@ const louping = (() => {
     return string.substring(bodyStart, bodyEnd);
   }
 
-  louping.consoleWrapper = (container, log) => {
+  louping.consoleWrapper = (log) => {
     const catcher = Object.create(console);
     catcher.assert = function () {
       const assertion = {
@@ -76,6 +73,14 @@ const louping = (() => {
       log.consoleCalls.push(assertion);
 
       const { domLabel, consoleLabel } = louping.renderLabels(log);
+
+      // invalid logs should never make it this far through louping
+      if (log.status === 'error') {
+      } else if (assertion.pass === false) {
+        log.status = 'fail'
+      } else {
+        log.status = 'pass';
+      }
 
       console.assert(
         assertion.assertion,
@@ -94,8 +99,8 @@ const louping = (() => {
         // could be more clever, but for now just write exercises with strings
         li.innerHTML = domLabel + String(assertion.messages[0]);
       }
-      const oldColor = container.firstChild.firstChild.firstChild.firstChild.style.color;
-      container.firstChild.firstChild.firstChild.firstChild.style.color = (() => {
+      const oldColor = log.view.firstChild.firstChild.firstChild.firstChild.style.color;
+      log.view.firstChild.firstChild.firstChild.firstChild.style.color = (() => {
         if (oldColor === 'red') return 'red';
         if (oldColor === 'orange') return 'orange';
         if (oldColor === 'green' || oldColor === 'black' || oldColor === '') {
@@ -108,7 +113,7 @@ const louping = (() => {
       time.style.float = 'right';
       li.appendChild(time);
       li.style.borderBottom = 'solid';
-      container.childNodes[1].appendChild(li);
+      log.view.childNodes[1].appendChild(li);
     }
     catcher.error = function () {
       const args = Array.from(arguments);
@@ -119,6 +124,8 @@ const louping = (() => {
       log.consoleCalls.push(error);
 
       const { domLabel, consoleLabel } = louping.renderLabels(log);
+
+      log.status = 'error';
 
       console.error(
         consoleLabel,
@@ -141,8 +148,8 @@ const louping = (() => {
       time.style.float = 'right';
       li.appendChild(time);
       li.style.borderBottom = 'groove'
-      container.firstChild.firstChild.firstChild.firstChild.style.color = 'red';
-      container.childNodes[1].appendChild(li);
+      log.view.firstChild.firstChild.firstChild.firstChild.style.color = 'red';
+      log.view.childNodes[1].appendChild(li);
     };
     catcher.log = function () {
       const logs = {
@@ -170,7 +177,7 @@ const louping = (() => {
       time.style.float = 'right';
       li.appendChild(time);
       li.style.borderBottom = 'groove'
-      container.childNodes[1].appendChild(li)
+      log.view.childNodes[1].appendChild(li)
       // container.childNodes[1].innerHTML += li.outerHTML;
       // force synchronous redraw ?
     }
