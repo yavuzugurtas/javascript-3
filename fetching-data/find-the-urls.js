@@ -74,7 +74,7 @@ function findTheURL3() {
       return data.varieties[1];
     })
     .then(function assertResult(result) {
-      console.assert(result === atob("YnJhemls"), 'this one is also a country');
+      console.assert(result === "brazil", 'this one is also a country');
     })
     .catch(function handleErrors(err) {
       console.error(err)
