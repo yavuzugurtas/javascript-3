@@ -88,7 +88,7 @@ exercises.push(writeTheDelays3);
 
 
 
-const loupedExercises = examples.map(louping);
+const loupedExercises = exercises.map(louping);
 const liveStudiedExercises = liveStudy(loupedExercises, 'Write The Delays');
 document.body.appendChild(liveStudiedExercises.container);
 
