@@ -1,5 +1,6 @@
 const liveStudy = (preReports, name) => {
 
+  // observe this
   let viewType = false;
   // true: sorted
   // false: ordered

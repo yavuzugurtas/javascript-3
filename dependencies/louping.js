@@ -75,7 +75,7 @@ const louping = (() => {
       const { domLabel, consoleLabel } = louping.renderLabels(log);
 
       // invalid logs should never make it this far through louping
-      if (log.status === 'error') {
+      if (log.status === 'error' || log.status === 'fail') {
       } else if (assertion.pass === false) {
         log.status = 'fail'
       } else {
