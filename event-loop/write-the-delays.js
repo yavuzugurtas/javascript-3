@@ -66,7 +66,7 @@ function writeTheDelays3() {
   }, null);
 
   setTimeout(function sto_2() {
-    console.assert(x === 'abc', 'x should be string abc');
+    console.assert(x.toString() === 'a,b,c', 'x.toString() should be string a,b,c');
   }, null);
 
   setTimeout(function sto_3() {
@@ -80,7 +80,12 @@ function writeTheDelays3() {
   }, null);
 
   setTimeout(function sto_5() {
-    console.assert(x.toString() === 'a,b', 'x.toString() should be a,b');
+    x.pop();
+    console.log(typeof x, x.toString());
+  }, null);
+
+  setTimeout(function sto_6() {
+    console.assert(x.toString() === 'ab', 'x.toString() should be ab');
   }, null);
 }
 exercises.push(writeTheDelays3);
