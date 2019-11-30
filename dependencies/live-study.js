@@ -32,7 +32,6 @@ ${err.stack}`;
     return toReturn;
   }
 
-
   // observe this
   let viewType = false;
   // true: sorted

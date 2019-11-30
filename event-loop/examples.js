@@ -127,34 +127,6 @@ function lateFail() {
 }
 examples.push(lateFail);
 
-function lateError() {
-  setTimeout(function erroringNow() {
-    console.error('poo')
-  }, 3000)
-}
-examples.push(lateError);
-
-
-
-function latePass() {
-  setTimeout(function passingNow() {
-    console.log('late pass')
-    console.assert('poo')
-  }, 3000)
-}
-examples.push(latePass);
-
-
-function example5() {
-
-  let x = 0;
-
-  setInterval(() => {
-    console.assert(x++ % 2 === 0, `exercise 0: ${x} % 2 === 0`);
-  }, 500)
-
-}
-// examples.push(example5);
 
 const loupedExamples = examples.map(louping);
 loupedExamples.iReadTheInstructions = loupedExamples.iReadTheInstructions;
