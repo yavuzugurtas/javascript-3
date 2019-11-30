@@ -12,7 +12,8 @@
 
   no need for test cases, these exercises aren't about behavior
 
-  needs hella error handling
+  setInterval alternates between pass & fail
+
 
 */
 
@@ -75,7 +76,7 @@ const louping = (() => {
       const { domLabel, consoleLabel } = louping.renderLabels(log);
 
       // invalid logs should never make it this far through louping
-      if (log.status === 'error') {
+      if (log.status === 'error' || log.status === 'fail') {
       } else if (assertion.pass === false) {
         log.status = 'fail'
       } else {

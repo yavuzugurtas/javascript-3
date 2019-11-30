@@ -1,5 +1,39 @@
+// make collapse(d) a configuration option
+
 const liveStudy = (preReports, name) => {
 
+
+  if (preReports.hasOwnProperty('iReadTheInstructions')
+    && preReports.iReadTheInstructions !== true) {
+
+    const header = document.createElement('h2');
+    header.innerHTML = name ? name : 'Live Study';
+
+
+    const err = new Error('read the instructions, then set .iReadTheInstructions to true')
+    const rtfm = document.createElement('pre');
+    rtfm.innerHTML = `
+${err.message}
+
+${err.stack}`;
+    rtfm.style.color = 'red';
+
+    const div = document.createElement('div');
+    div.id = 'live-study';
+    div.appendChild(header);
+    div.appendChild(rtfm);
+
+    div.appendChild(document.createElement('br'));
+    div.appendChild(document.createElement('hr'));
+    div.appendChild(document.createElement('hr'));
+
+    const toReturn = {};
+    toReturn.container = div;
+    return toReturn;
+  }
+
+
+  // observe this
   let viewType = false;
   // true: sorted
   // false: ordered
@@ -7,34 +41,38 @@ const liveStudy = (preReports, name) => {
   // arr[0]: search
   // de-hack this later
 
+  const updateRendering = () => {
+    // works by closure (not args) for now
+
+    exercisesContainer.innerHTML = '';
+    exercisesContainer.appendChild(
+      viewType === false
+        ? renderReports(exercises)
+        : viewType === true
+          ? renderSortedReports(exercises)
+          : viewType instanceof Object
+            ? renderReports(
+              exercises.filter(r => r.view.innerHTML.match(new RegExp(input.value, 'gi')))
+            )
+            : renderOneStatus(exercises, viewType)
+    );
+
+    statsContainer.innerHTML = '';
+    statsContainer.appendChild(renderStats(exercises));
+  }
+
   const exercises = new Proxy(preReports, {
     // figure out how to getterize exercises that are added later
     // may one day need to deal with the length thing
     set(target, prop, val) { // assuming val is always a valid exercise
       target[prop] = val;
-      statsContainer.innerHTML = '';
-      statsContainer.appendChild(renderStats(exercises));
 
-
-      exercisesContainer.innerHTML = '';
-      exercisesContainer.appendChild(
-        viewType === false
-          ? renderReports(exercises)
-          : viewType === true
-            ? renderSortedReports(exercises)
-            : viewType instanceof Object
-              ? renderReports(
-                exercises.filter(r => r.view.innerHTML.match(new RegExp(input.value, 'gi')))
-              )
-              : renderOneStatus(exercises, viewType)
-      );
-
-      statsContainer.innerHTML = '';
-      statsContainer.appendChild(renderStats(exercises));
+      updateRendering()
 
       return true;
     }
   })
+
 
 
   const observeReport = exercise => {
@@ -52,7 +90,7 @@ const liveStudy = (preReports, name) => {
         },
         set: function (newStatus) {
           status = newStatus;
-          exercises[exercises.indexOf(exercise)] = exercise;
+          updateRendering();
           // color changing would be the exercises's problem
         }
       }
@@ -239,6 +277,7 @@ const liveStudy = (preReports, name) => {
     const div = document.createElement('div');
     div.id = 'live-study';
     div.appendChild(header);
+
     div.appendChild(statsContainer);
     const summary = document.createElement('summary');
     summary.innerHTML = 'Live Studies:';

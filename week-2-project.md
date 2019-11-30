@@ -33,6 +33,7 @@ There are two general paths you can take to get this finished repo, neither is b
 * [In The Loop](https://www.youtube.com/watch?v=cCOL7MC4Pl0) (another good visualization of the event loop)
 * [Traversy Crash Course](https://www.youtube.com/watch?v=PoRJizFvM7s)
 * [HYF Ams Resources](https://github.com/HackYourFuture/JavaScript2/blob/master/Week2/README.md)
+* [Callbacks by Example](https://github.com/elewa-academy/callbacks)
 * Guo Videos: [async 1](https://www.youtube.com/watch?v=8_BRW2EGTNE), [async 2](https://www.youtube.com/watch?v=lDecf_xxWKw)
 * javascript.info: [Closure](https://javascript.info/closure), [Asynchronous Programming](https://javascript.info/async), [Fetch](https://javascript.info/fetch)
 

@@ -23,6 +23,7 @@
 */
 
 const findTheURLs = [];
+findTheURLs.iReadTheInstructions = false;
 
 function findTheURL1() {
   const requestURL = null;
@@ -51,10 +52,11 @@ function findTheURL2() {
     .then(function parseResponse(resp) { return resp.json() })
     .then(function workWithData(data) {
       const dataKeys = Object.keys(data);
-      return dataKeys.filter(key => data[key] === null);
+      return dataKeys.filter(key => data[key] === true);
     })
     .then(function assertResult(result) {
-      console.assert(JSON.stringify(result) === '["wood","pillow"]', 'these things are not edible');
+      console.assert(JSON.stringify(result) === '["pea","lentil"]',
+        'these things are delicious');
     })
     .catch(function handleErrors(err) {
       console.error(err)
@@ -108,5 +110,6 @@ findTheURLs.push(findTheURL4);
 
 
 const fetchingFindTheURLs = findTheURLs.map(fetching);
+fetchingFindTheURLs.iReadTheInstructions = findTheURLs.iReadTheInstructions;
 const liveStudiedFindTheURLs = liveStudy(fetchingFindTheURLs, 'Find The URLs');
 document.body.appendChild(liveStudiedFindTheURLs.container);
