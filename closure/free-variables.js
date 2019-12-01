@@ -127,7 +127,7 @@ freeVariables.push(exercise2);
 
 
 
-console.groupCollapsed('Free Variables')
+console.group('Free Variables')
 const evaluatedFreeVariables = freeVariables
   .map(f => evaluate(f))
   .map(report => {

@@ -157,7 +157,7 @@ exercise4.display = true;
 basicClosures.push(exercise4);
 
 
-console.groupCollapsed('Basic Closures')
+console.group('Basic Closures')
 const evaluatedBasicClosures = basicClosures
   .map(f => evaluate(f))
   .map(report => {
