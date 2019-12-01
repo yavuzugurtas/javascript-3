@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Classes</title>
+
+  <link rel="stylesheet" type="text/css" href="../dependencies/prism/style.css">
+  <script src='../dependencies/prism/script.js'></script>
+
+  <script src='../dependencies/evaluate.js'></script>
+  <script src='../dependencies/live-study.js'></script>
+
+</head>
+
+<body>
+
+  <h1>Classes</h1>
+
+  <a id='source-link' target='_blank'>
+    <button>
+      Review Source on GitHub
+    </button>
+  </a>
+  <script>
+    document.getElementById('source-link').href = (() => {
+      const userName = window.location.href.split('/')[2].split('.')[0];
+      const repoName = window.location.href.split('/')[3];
+      const directory = window.location.href.split('/')[4];
+      return 'https://github.com/' + userName + '/' + repoName + '/tree/master/' + directory;
+    })();
+  </script>
+
+  <ul>
+    <li>
+      <a href='https://javascript.info/class' target='_blank'>Basic Syntax</a>
+    </li>
+    <li>
+      <a href='https://javascript.info/static-properties-methods' target='_blank'>Static Properties</a>
+    </li>
+    <li>
+      <a href='https://javascript.info/class-inheritance' target='_blank'>Class Inheritance</a>
+    </li>
+  </ul>
+
+  <script src='basic-examples.js'></script>
+  <script src='trickier-examples.js'></script>
+
+</body>
+
+</html>

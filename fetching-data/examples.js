@@ -53,22 +53,13 @@ function errorHandling() {
 
   fetch(requestURL)
     .then(function then_1(response) {
-      console.log('errors are handled by the nearest catch statement')
+      console.log('when there is an error, fetch will skip to the catch ...');
       return response.json();
     })
-    .catch(function catch_1(err) { console.error(err) })
     .then(function then_2() {
-      console.log('when there is an error, fetch will skip to the nearest catch ...');
-      throw new Error('error in then 2');
-    })
-    // .catch(function catch_2(err) { console.error(err) })
-    .then(function then_3() {
       console.log("... and skip over any then's on the way!");
     })
-    .catch(function catch_3(err) { console.error(err) })
-    .then(function then_4() {
-      console.log("after an error has been handled, then's will again be executed");
-    })
+    .catch(function handleError(err) { console.error(err) });
 
   return requestURL;
 }

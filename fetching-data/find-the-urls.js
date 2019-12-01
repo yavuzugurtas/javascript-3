@@ -1,7 +1,7 @@
 /* explore the data available behind the practice API
     can you figure out which URL's point to the resources that will pass the asserts?
 
-    live API for fetching: https://hackyourfuturebelgiu.github.io/practice-api/
+    live API for fetching: https://hackyourfuture.be/practice-api/
     data in source: https://github.com/HackYourFutureBelgium/practice-api
 
     This set of exercises is to help you look behind the mystery of an API call.
@@ -14,7 +14,7 @@
     Navigate around the repository a bit to become familiar with what's in the .json files
        https://github.com/HackYourFutureBelgium/practice-api
     Then try accessing the same data via the API by entering this URL in your browser ...
-      https://hackyourfuturebelgiu.github.io/practice-api/
+      https://hackyourfuture.be/practice-api/
     ... adding paths to the URL until you find the same data you were studying as source code on github
 
 
@@ -23,6 +23,7 @@
 */
 
 const findTheURLs = [];
+findTheURLs.iReadTheInstructions = false;
 
 function findTheURL1() {
   const requestURL = null;
@@ -51,10 +52,11 @@ function findTheURL2() {
     .then(function parseResponse(resp) { return resp.json() })
     .then(function workWithData(data) {
       const dataKeys = Object.keys(data);
-      return dataKeys.filter(key => data[key] === null);
+      return dataKeys.filter(key => data[key] === true);
     })
     .then(function assertResult(result) {
-      console.assert(JSON.stringify(result) === '["wood","pillow"]', 'these things are not edible');
+      console.assert(JSON.stringify(result) === '["pea","lentil"]',
+        'these things are delicious');
     })
     .catch(function handleErrors(err) {
       console.error(err)
@@ -74,7 +76,7 @@ function findTheURL3() {
       return data.varieties[1];
     })
     .then(function assertResult(result) {
-      console.assert(result === atob("YnJhemls"), 'this one is also a country');
+      console.assert(result === "brazil", 'this one is also a country');
     })
     .catch(function handleErrors(err) {
       console.error(err)
@@ -108,5 +110,6 @@ findTheURLs.push(findTheURL4);
 
 
 const fetchingFindTheURLs = findTheURLs.map(fetching);
+fetchingFindTheURLs.iReadTheInstructions = findTheURLs.iReadTheInstructions;
 const liveStudiedFindTheURLs = liveStudy(fetchingFindTheURLs, 'Find The URLs');
 document.body.appendChild(liveStudiedFindTheURLs.container);

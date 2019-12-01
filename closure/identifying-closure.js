@@ -182,7 +182,7 @@ sometimesCreatesAClosure2.display = true;
 identifyingClosure.push(sometimesCreatesAClosure2)
 
 
-console.groupCollapsed('Identifying Closure')
+console.group('Identifying Closure')
 const evaluatedIdentifyingClosure = identifyingClosure
   .map(f => evaluate(f))
   .map(report => {

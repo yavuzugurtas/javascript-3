@@ -1,9 +1,16 @@
 // http://latentflip.com/loupe/
 // https://javascript.info/settimeout-setinterval
 // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+/*
 
+instructions
+...
+now set iReadTheInstructions to true
+
+*/
 
 const examples = [];
+examples.iReadTheInstructions = true;
 
 function setTimeoutZero() {
 
@@ -122,5 +129,6 @@ examples.push(lateFail);
 
 
 const loupedExamples = examples.map(louping);
+loupedExamples.iReadTheInstructions = examples.iReadTheInstructions;
 const liveStudiedExamples = liveStudy(loupedExamples, 'Examples');
 document.body.appendChild(liveStudiedExamples.container);

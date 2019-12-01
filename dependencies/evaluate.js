@@ -1,4 +1,6 @@
 // hardcoded for Prism.  eventually todo: abstract the higlighting library
+// factor in the coding from status numbers to strings?
+
 
 const evaluate = (() => {
   function evaluate(func, cases) {

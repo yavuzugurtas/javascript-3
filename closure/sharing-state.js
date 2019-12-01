@@ -234,7 +234,7 @@ function exercise3() {
 exercise3.display = true;
 sharingState.push(exercise3);
 
-console.groupCollapsed('Sharing State')
+console.group('Sharing State')
 const evaluatedSharingState = sharingState
   .map(f => evaluate(f))
   .map(report => {

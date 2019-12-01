@@ -12,7 +12,8 @@
 
   no need for test cases, these exercises aren't about behavior
 
-  needs hella error handling
+  setInterval alternates between pass & fail
+
 
 */
 
